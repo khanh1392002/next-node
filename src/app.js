@@ -19,6 +19,6 @@ app.use("/api",User)
 
 
 const PORT = 3001
-app.listen(PORT, ()=>{
-    console.log('Thanh cong')
-})
+app.listen(PORT, () => {
+    console.log(`Server đang chạy cổng ${PORT}`);
+  });
