@@ -8,6 +8,16 @@ export const List = async (req ,res) => {
     const products = await Products.find().exec()
     res.json(products)
 }
+export const search = async (req ,res) => {
+    const products = await Products.find(
+        {
+            '$or':[
+                {name:{$regex:req.params.key}}
+            ]
+        }
+    ).exec()
+    res.json(products)
+}
 export const get = async (req ,res) => {
     const products = await Products.findOne({_id: req.params.id}).exec()
     res.json(products)
