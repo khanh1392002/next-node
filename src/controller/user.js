@@ -50,3 +50,23 @@ export const signup = async (req, res) =>{
         
     }
 }
+export const creatuser = async  (req ,res) => {
+    const user = await new User(req.body).save()
+    res.json(user)
+}
+export const List = async (req ,res) => {
+    const user = await User.find().exec()
+    res.json(user)
+}
+export const get = async (req ,res) => {
+    const user = await User.findOne({_id: req.params.id}).exec()
+    res.json(user)
+}
+export const remove = async (req ,res) => {
+    const user = await User.findByIdAndDelete({_id: req.params.id}).exec()
+    res.json(user)
+}
+export const update = async (req ,res) => {
+    const user = await User.findByIdAndUpdate({_id: req.params.id}, req.body, {new:true}).exec()
+    res.json(user)
+}
